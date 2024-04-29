@@ -3,7 +3,7 @@ name: Deploy React App to cPanel
 on:
   push:
     branches:
-      - main  # Set this to your default branch
+      - master  # Set this to your default branch
 
 jobs:
   build-and-deploy:
@@ -27,7 +27,8 @@ jobs:
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
-          server: ${{ secrets.HOST }}
+          server: debugthugs20.maurice.webcup.hodi.host
           username: ${{ secrets.CPANEL_USERNAME }}
           password: ${{ secrets.CPANEL_PASSWORD }}
-          local-dir: ./dist/
+          local-dir: build/
+          server-dir: public_html/
